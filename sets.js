@@ -107,4 +107,8 @@ function Set(set) {
     this.copy = function() {
         return new Set(this._set.slice());
     }
+
+    this.asArray = function() {
+        return this._set;
+    }
 }
