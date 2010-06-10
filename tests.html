@@ -2,6 +2,12 @@
 <html>
     <head>
         <script>
+            function loadScript(file) {
+                script = document.createElement("script");
+                script.setAttribute("src", file);
+                script.setAttribute("type","text/javascript");
+                document.body.appendChild(script);
+            }
             function runtests(file) {
                 if(typeof(console) == "undefined") {
                     if(typeof(fireunit) == "undefined") {
@@ -13,14 +19,8 @@
                     message.innerHTML = msg;
                     document.body.appendChild(message);
                 } else {
-                    codeScript = document.createElement("script");
-                    codeScript.setAttribute("src", file);
-                    codeScript.setAttribute("type","text/javascript")
-                    testScript = document.createElement("script");
-                    testScript.setAttribute("src", "test_"+file);
-                    testScript.setAttribute("type","text/javascript")
-                    document.body.appendChild(codeScript);
-                    document.body.appendChild(testScript);
+                    loadScript(file);
+                    loadScript("test_"+file);
                 }
             }
         </script>
