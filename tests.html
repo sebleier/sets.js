@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function runtests(file) {
+                if(typeof(console) == "undefined") {
+                    if(typeof(fireunit) == "undefined") {
+                        msg = "The test runner requires firebug and fireunit installed and enabled";
+                    } else {
+                        msg = "The test runner requires firebug to be installed and enabled";
+                    }
+                    message = document.createElement("div");
+                    message.innerHTML = msg;
+                    document.body.appendChild(message);
+                } else {
+                    codeScript = document.createElement("script");
+                    codeScript.setAttribute("src", file);
+                    codeScript.setAttribute("type","text/javascript")
+                    testScript = document.createElement("script");
+                    testScript.setAttribute("src", "test_"+file);
+                    testScript.setAttribute("type","text/javascript")
+                    document.body.appendChild(codeScript);
+                    document.body.appendChild(testScript);
+                }
+            }
+        </script>
+    </head>
+    <body onload="runtests('sets.js')"></body>
+</html>
