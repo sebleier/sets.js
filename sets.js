@@ -1,7 +1,6 @@
-
 function Set(set) {
 
-    this._set = typeof(set) == "undefined" ? [] : set;
+    this._set = set === undefined ? [] : set;
     this.length = this._set.length // Cardinality of the set
 
     this.contains = function(element) {
@@ -87,7 +86,7 @@ function Set(set) {
     }
 
     this.add = function(element) {
-        if (this._set.indexOf(element) == -1) {
+        if (this._set.indexOf(element) === -1) {
             this._set.push(element);
             this.length++;
         }
